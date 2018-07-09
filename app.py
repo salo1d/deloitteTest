@@ -33,6 +33,38 @@ def do_login():
         flash('wrong password!')
     return home()
 
+@app.route("/deleteUser", methods=['POST'])
+def delete_user():
+
+    POST_USERNAME = str(request.form['username_to_delete'])
+    POST_PASSWORD = str(request.form['password_d'])
+
+    Session = sessionmaker(bind=engine)
+    s = Session()
+    query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
+    user_to_delete = query.first()
+
+    if user_to_delete:
+        s.delete(user_to_delete)
+        s.commit()
+    else:
+        flash('no user ' + POST_USERNAME)
+    return home()
+
+
+@app.route("/addUser", methods=['POST'])
+def addUser():
+
+    POST_USERNAME = str(request.form['username_to_add'])
+    POST_PASSWORD = str(request.form['password_a'])
+
+    Session = sessionmaker(bind=engine)
+    s = Session()
+    user_to_add = User(POST_USERNAME, POST_PASSWORD)
+    s.add(user_to_add)
+    s.commit()
+    return home()
+
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
