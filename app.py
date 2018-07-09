@@ -32,3 +32,13 @@ def do_login():
     else:
         flash('wrong password!')
     return home()
+
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return home()
+ 
+
+if __name__ == "__main__":
+    app.secret_key = os.urandom(12)
+    app.run(debug=True,host='0.0.0.0', port=4000)
