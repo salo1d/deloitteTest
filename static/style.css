@@ -76,3 +76,11 @@ box-shadow: none;
   display: block;
 	margin-top: 12px;
 }
+.logout {
+  text-align: center;
+  margin-top: 10px;
+  background-color: #ff3300;
+}
+.logout:hover {
+  background-color: #991f00;
+}
