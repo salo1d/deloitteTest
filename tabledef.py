@@ -5,6 +5,10 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
  
 engine = create_engine('sqlite:///deloiteTest.db', echo=True)
+
+#below is line is used for PostgreSQL
+#engine = create_engine('postgresql://user:password@localhost:5432/deloitte', echo=True)
+
 Base = declarative_base()
  
 ########################################################################
