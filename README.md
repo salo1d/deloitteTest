@@ -1,5 +1,5 @@
 # deloitteTest
-Test for Python Dev
+Test for Python dev
 
 Uses:
 * Python 3.6
